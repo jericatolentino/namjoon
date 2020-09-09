@@ -4,6 +4,10 @@ const { StatsWriterPlugin } = require("webpack-stats-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const isOffline = !!process.env.IS_OFFLINE;
+/*
+!! - converts variable of any type to boolean then evaluated it
+e.g. if string variable when converted is (0/null/undefined) then result is false
+*/
 
 const babelOptions = {
   // Don't use .babelrc here but web browser optimized settings
