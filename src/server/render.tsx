@@ -3,6 +3,7 @@
  */
 import React from "react";
 import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
 
 import App from "../browser/App";
 import ConfigContext from "../components/ConfigContext";
@@ -24,9 +25,11 @@ export default async function render(): Promise<string> {
   }
 
   const content = renderToString(
-    <ConfigContext.Provider value={config}>
-      <App />
-    </ConfigContext.Provider>,
+    <StaticRouter>
+      <ConfigContext.Provider value={config}>
+        <App />
+      </ConfigContext.Provider>
+    </StaticRouter>,
   );
   return html({ stats, content, config });
 }
